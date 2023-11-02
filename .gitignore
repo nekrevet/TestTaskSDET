@@ -1,0 +1,5 @@
+.idea/
+allure_res
+__pycache__
+.pytest_cache
+transactions.csv
