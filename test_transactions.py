@@ -16,4 +16,3 @@ def test_user_can_make_transactions(browser, fixture_with_attachment_in_finalize
     page.go_to_transaction_page()
     page = TransactionsPage(browser, browser.current_url)
     page.should_be_transactions()
-    page.generate_csv()

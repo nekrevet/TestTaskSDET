@@ -12,6 +12,7 @@ class TransactionsPage(BasePage):
             ErrorMessages.NO_CREDIT_TRANSACTION.value
         assert self.is_element_present(*TransactionsPageLocators.DEBIT_TRANSACTION), \
             ErrorMessages.NO_DEBIT_TRANSACTION.value
+        self.generate_csv()
 
     def generate_csv(self):
         credit_date = parser.parse(self.browser.find_element(
