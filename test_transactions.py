@@ -4,7 +4,10 @@ from pages.account_page import AccountPage
 from pages.transactions_page import TransactionsPage
 from enums.global_enums import TransactionTypes
 
+import allure
 
+
+@allure.title('Checking user making transactions')
 def test_user_can_make_transactions(browser, fixture_with_attachment_in_finalizer):
     page = LoginPage(browser, SERVICE_URL)
     page.open()
