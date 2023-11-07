@@ -7,7 +7,7 @@ import allure
 
 class TransactionsPage(BasePage):
     @allure.step("check that user's transactions are presented")
-    def should_be_transactions(self):
+    def check_transactions_made_by_user_are_presented(self):
         with allure.step('check that credit transaction is presented'):
             assert self.is_element_present(*TransactionsPageLocators.CREDIT_TRANSACTION), \
                 ErrorMessages.NO_CREDIT_TRANSACTION.value

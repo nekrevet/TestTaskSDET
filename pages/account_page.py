@@ -10,7 +10,7 @@ import allure
 
 class AccountPage(BasePage):
     @allure.step('make transaction {tr_type}')
-    def transaction(self, tr_type):
+    def make_transaction(self, tr_type):
         if tr_type == TransactionTypes.DEPOSIT.value:
             with allure.step('click on deposit button'):
                 self.browser.find_element(*AccountPageLocators.DEPOSIT_BTN).click()
