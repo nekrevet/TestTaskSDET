@@ -8,7 +8,7 @@ import allure
 
 
 @allure.title('Checking user making transactions')
-def test_user_can_make_transactions(browser, fixture_with_attachment_in_finalizer):
+def test_user_can_make_transactions(browser, fixture_with_attachment_in_finalizer, generate_csv):
     page = LoginPage(browser, SERVICE_URL)
     page.open()
     page.login()

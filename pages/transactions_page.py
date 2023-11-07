@@ -4,9 +4,6 @@ from enums.global_enums import ErrorMessages
 
 import allure
 
-import csv
-from dateutil import parser
-
 
 class TransactionsPage(BasePage):
     @allure.step("check that user's transactions are presented")
@@ -17,27 +14,3 @@ class TransactionsPage(BasePage):
         with allure.step('check that debit transaction is presented'):
             assert self.is_element_present(*TransactionsPageLocators.DEBIT_TRANSACTION), \
                 ErrorMessages.NO_DEBIT_TRANSACTION.value
-        self.generate_csv()
-
-    def generate_csv(self):
-        credit_date = parser.parse(self.browser.find_element(
-            *TransactionsPageLocators.CREDIT_DATE).text).strftime('%d %B %Y %H:%M:%S')
-        debit_date = parser.parse(self.browser.find_element(
-            *TransactionsPageLocators.DEBIT_DATE).text).strftime('%d %B %Y %H:%M:%S')
-        transactions = [
-            [
-                ' '.join(
-                        (credit_date,
-                         self.browser.find_element(*TransactionsPageLocators.CREDIT_SUM).text,
-                         self.browser.find_element(*TransactionsPageLocators.CREDIT_TYPE).text))
-            ],
-            [
-                ' '.join(
-                        (debit_date,
-                         self.browser.find_element(*TransactionsPageLocators.DEBIT_SUM).text,
-                         self.browser.find_element(*TransactionsPageLocators.DEBIT_TYPE).text))
-            ]
-        ]
-        with open('transactions.csv', 'w', newline='') as file:
-            writer = csv.writer(file, quoting=csv.QUOTE_NONE)
-            writer.writerows(transactions)
