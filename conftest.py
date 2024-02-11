@@ -23,13 +23,13 @@ def browser(request):
     if browser_name == 'chrome':
         chrome_options = Options()
         browser = webdriver.Remote(
-            command_executor='http://192.168.1.69:4444/wd/hub',
+            command_executor='http://192.168.1.71:4444/wd/hub',
             options=chrome_options
         )
     elif browser_name == 'firefox':
         firefox_options = FO()
         browser = webdriver.Remote(
-            command_executor='http://192.168.1.69:4444/wd/hub',
+            command_executor='http://192.168.1.71:4444/wd/hub',
             options=firefox_options
         )
     else:
